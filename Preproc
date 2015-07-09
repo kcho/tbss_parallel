@@ -1,0 +1,12 @@
+echo processing $1
+X=`${FSLDIR}/bin/fslval $1 dim1`
+X=`echo "${X} 2 -p" | dc -`
+Y=`${FSLDIR}/bin/fslval $1 dim2`
+Y=`echo "${Y} 2 -p" | dc -`
+Z=`${FSLDIR}/bin/fslval $1 dim3`
+Z=`echo "${Z} 2 -p" | dc -`
+echo ${X} ${Y} ${Z}
+$FSLDIR/bin/fslmaths $1 -min 1 -ero -roi 1 $X 1 $Y 1 $Z 0 1 FA/${1}_FA
+$FSLDIR/bin/fslmaths FA/${1}_FA -bin FA/${1}_FA_mask
+$FSLDIR/bin/fslmaths FA/${1}_FA_mask -dilD -dilD -sub 1 -abs -add FA/${1}_FA_mask FA/${1}_FA_mask -odt char
+$FSLDIR/bin/immv $1 origdata
