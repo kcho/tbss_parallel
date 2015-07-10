@@ -10,14 +10,14 @@ Uses GNU parallel to dispatch jobs in parallel.
 
 ## Usage
 
-1. git clone
+###1. git clone
 
 ```
 cd ~/
 git clone https://github.com/kcho/tbss_parallel
 ```
 
-2. add path
+###2. add path
 
 ```
 export PATH=tbss_parallel:${PATH}
@@ -27,7 +27,7 @@ export PATH=tbss_parallel:${PATH}
 
 
 
-3. Use scripts
+###3. Use scripts
 
 ```
 cd ~/FA_collection
